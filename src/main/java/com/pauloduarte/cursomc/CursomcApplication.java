@@ -8,5 +8,7 @@ public class CursomcApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
+		
+		System.out.println("Olá mundo");
 	}
 }
