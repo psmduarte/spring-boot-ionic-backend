@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pauloduarte.cursomc.domain.Categoria;
-import com.pauloduarte.repositories.CategoriaRepository;
+import com.pauloduarte.cursomc.repositories.CategoriaRepository;
 
 @Service
-public class CategoriaService {
+public class CategoriaService{
 	
 	@Autowired
 	private CategoriaRepository repo;
