@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Morada implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -22,6 +24,7 @@ public class Morada implements Serializable{
 	private String bairro;
 	private String codigopostal;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
@@ -54,11 +57,11 @@ public class Morada implements Serializable{
 		this.id = id;
 	}
 
-	public String getLogradouro() {
+	public String getRua() {
 		return rua;
 	}
 
-	public void setLogradouro(String rua) {
+	public void setRua(String rua) {
 		this.rua = rua;
 	}
 
