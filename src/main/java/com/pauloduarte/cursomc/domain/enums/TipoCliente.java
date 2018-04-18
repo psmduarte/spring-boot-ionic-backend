@@ -1,6 +1,5 @@
 package com.pauloduarte.cursomc.domain.enums;
 
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 
 public enum TipoCliente {
 	PESSOAFISICA (1,"Pessoa Física"),      
