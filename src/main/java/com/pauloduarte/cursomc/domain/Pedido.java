@@ -40,7 +40,7 @@ public class Pedido implements Serializable {
 	private Morada moradaEntrega;
 	
 	@OneToMany(mappedBy="id.pedido")
-	private Set<ItemPedido> items = new HashSet<>();
+	private Set<ItemPedido> itens = new HashSet<>();
 	
 
 	public Pedido() {
@@ -94,11 +94,11 @@ public class Pedido implements Serializable {
 		this.moradaEntrega = moradaEntrega;
 	}
 	public Set<ItemPedido> getItems() {
-		return items;
+		return itens;
 	}
 
-	public void setItems(Set<ItemPedido> items) {
-		this.items = items;
+	public void setItems(Set<ItemPedido> itens) {
+		this.itens = itens;
 	}
 	
 

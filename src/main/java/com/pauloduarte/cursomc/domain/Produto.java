@@ -24,7 +24,7 @@ public class Produto implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer Id;
+	private Integer id;
 	private String nome;
 	private double preco;
 	
@@ -38,32 +38,33 @@ public class Produto implements Serializable {
 
 	@JsonIgnore
 	@OneToMany(mappedBy="id.produto")
-	private Set<ItemPedido> itens = new HashSet<>();
+	public Set<ItemPedido> items = new HashSet<>();
 	
 	public Produto() {  //metodo construtor vazio
 	}
 
 	public Produto(Integer id, String nome, double preco) {
 		super();
-		this.Id = id;
+		this.id = id;
 		this.nome = nome;
 		this.preco = preco;
 	}
 	
+	@JsonIgnore
 	public List<Pedido> getPedidos() {
 		List<Pedido> lista = new ArrayList<>();
-		for (ItemPedido x : itens) {
+		for (ItemPedido x : items) {
 			lista.add(x.getPedido());
 		}
 		return lista;
 	}
 
-	public Integer getId() {
-		return Id;
+	public Integer getid() {
+		return id;
 	}
 
-	public void setId(Integer id) {
-		this.Id = id;
+	public void setid(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -91,11 +92,11 @@ public class Produto implements Serializable {
 	}
 	
 	public Set<ItemPedido> getItems() {
-		return itens;
+		return items;
 	}
 
 	public void setItems(Set<ItemPedido> itens) {
-		this.itens = itens;
+		this.items = itens;
 	}
 
 
@@ -103,7 +104,7 @@ public class Produto implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -116,10 +117,10 @@ public class Produto implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
-		if (Id == null) {
-			if (other.Id != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!Id.equals(other.Id))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
