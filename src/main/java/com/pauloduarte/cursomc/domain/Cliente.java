@@ -26,7 +26,7 @@ public class Cliente implements Serializable{
 	private Integer id;
 	private String nome;
 	private String email;
-	private Double nif;
+	private String nif;
 	private Integer tipo;
 	
 
@@ -44,7 +44,7 @@ public class Cliente implements Serializable{
 	public Cliente() {
 	}
 
-	public Cliente(Integer id, String nome, String email, Double nif, TipoCliente tipo) { // aqui quando criamos os construtores não selecionamos as colecções (ex: moradas e telefones
+	public Cliente(Integer id, String nome, String email, String nif, TipoCliente tipo) { // aqui quando criamos os construtores não selecionamos as colecções (ex: moradas e telefones
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -78,11 +78,11 @@ public class Cliente implements Serializable{
 		this.email = email;
 	}
 
-	public Double getNif() {
+	public String getNif() {
 		return nif;
 	}
 
-	public void setNif(Double nif) {
+	public void setNif(String nif) {
 		this.nif = nif;
 	}
 

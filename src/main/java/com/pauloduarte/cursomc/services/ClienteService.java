@@ -18,6 +18,7 @@ import com.pauloduarte.cursomc.domain.enums.TipoCliente;
 import com.pauloduarte.cursomc.dto.ClienteDTO;
 import com.pauloduarte.cursomc.dto.ClienteNewDTO;
 import com.pauloduarte.cursomc.repositories.ClienteRepository;
+import com.pauloduarte.cursomc.repositories.MoradaRepository;
 import com.pauloduarte.cursomc.services.exceptions.DataIntegrityException;
 import com.pauloduarte.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -26,6 +27,9 @@ public class ClienteService {
 	
 	@Autowired
 	private ClienteRepository repo;
+	
+	@Autowired
+	private MoradaRepository moradaRepository;
 	
 	
 	
@@ -38,7 +42,9 @@ public class ClienteService {
 	@Transactional
 	public Cliente insert(Cliente obj){
 		obj.setId(null);
-		return repo.save(obj);
+		obj = repo.save(obj);
+		moradaRepository.saveAll(obj.getMoradas());
+		return obj;
 	}
 	
 	public Cliente update(Cliente obj) {
@@ -76,6 +82,7 @@ public class ClienteService {
 		Morada mor = new Morada(null, objDto.getRua(), objDto.getNumero(), objDto.getComplemento(), objDto.getBairro(), objDto.getCodigopostal(), cli, cid);
 		cli.getMoradas().add(mor);
 		cli.getTelefones().add(objDto.getTelefone1());
+		
 		
 		if(objDto.getTelefone2() != null) {
 			cli.getTelefones().add(objDto.getTelefone2());

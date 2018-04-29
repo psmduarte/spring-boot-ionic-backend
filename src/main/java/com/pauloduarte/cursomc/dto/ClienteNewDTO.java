@@ -7,7 +7,7 @@ public class ClienteNewDTO implements Serializable{
 	
 	private String nome;
 	private String email;
-	private Double nif;
+	private String nif;
 	private Integer tipo;
 	
 	private String rua;
@@ -43,11 +43,11 @@ public class ClienteNewDTO implements Serializable{
 		this.email = email;
 	}
 
-	public Double getNif() {
+	public String getNif() {
 		return nif;
 	}
 
-	public void setNif(Double nif) {
+	public void setNif(String nif) {
 		this.nif = nif;
 	}
 

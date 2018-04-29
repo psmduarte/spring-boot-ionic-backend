@@ -97,7 +97,7 @@ public class CursomcApplication implements CommandLineRunner {
 		distritoRepository.saveAll(Arrays.asList(dist1,dist2));
 		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
 		
-		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@live.com", 123456789d, TipoCliente.PESSOAFISICA);
+		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@live.com", "123456789", TipoCliente.PESSOAFISICA);
 		
 		cli1.getTelefones().addAll(Arrays.asList("111111111","222222222"));
 		
