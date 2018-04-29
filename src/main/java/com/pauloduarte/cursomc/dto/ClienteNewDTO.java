@@ -7,23 +7,25 @@ public class ClienteNewDTO implements Serializable{
 	
 	private String nome;
 	private String email;
-	private Integer nif;
+	private Double nif;
 	private Integer tipo;
 	
 	private String rua;
-	private Integer numero;
+	private String numero;
 	private String complemento;
 	private String bairro;
 	private String codigopostal;
 	
 	private String telefone1;
 	private String telefone2;
-	private String  telefone3;
+	private String telefone3;
 	
 	private Integer cidadeId;
 	
 	public ClienteNewDTO() {
 	}
+	
+	
 
 	public String getNome() {
 		return nome;
@@ -41,11 +43,11 @@ public class ClienteNewDTO implements Serializable{
 		this.email = email;
 	}
 
-	public Integer getNif() {
+	public Double getNif() {
 		return nif;
 	}
 
-	public void setNif(Integer nif) {
+	public void setNif(Double nif) {
 		this.nif = nif;
 	}
 
@@ -65,11 +67,11 @@ public class ClienteNewDTO implements Serializable{
 		this.rua = rua;
 	}
 
-	public Integer getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(Integer numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
