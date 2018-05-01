@@ -1,7 +1,7 @@
 package com.pauloduarte.cursomc.services.validation.utils;
 
 /**
- * @author Rafa Domingos
+ * @author Adaptado de Rafa Domingos
  * @see <a href="https://github.com/Rafa-Domingos/Springclass/blob/master/src/main/java/com/rafael/springclass/services/validation/Utils/BR.java</a>
  */
 public class PT{
