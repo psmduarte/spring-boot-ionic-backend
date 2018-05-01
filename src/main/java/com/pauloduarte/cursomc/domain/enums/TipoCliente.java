@@ -2,8 +2,9 @@ package com.pauloduarte.cursomc.domain.enums;
 
 
 public enum TipoCliente {
-	PESSOAFISICA (1,"Pessoa Física"),      
-	PESSOAJURIDICA (2,"Pessoa Jurídica");
+	PESSOASINGULAR (1,"Pessoa Singular"),     
+	PESSOACOLECTIVA (2,"Pessoa Colectiva");
+	
 	
 	private int codigo;
 	private String descricao;
