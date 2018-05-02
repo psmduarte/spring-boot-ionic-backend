@@ -12,37 +12,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerMapping;
 
 import com.pauloduarte.cursomc.domain.Cliente;
-import com.pauloduarte.cursomc.dto.ClienteNewDTO;
+import com.pauloduarte.cursomc.dto.ClienteDTO;
 import com.pauloduarte.cursomc.repositories.ClienteRepository;
 import com.pauloduarte.cursomc.resources.exception.FieldMessage;
 
-public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert, ClienteNewDTO> {
-	
-	
+public class ClienteUpdateValidator implements ConstraintValidator<ClienteUpdate, ClienteDTO>{
+	@Autowired
+	private HttpServletRequest request;
 	
 	@Autowired
 	private ClienteRepository repo;
 	
 	@Override
-	public void initialize(ClienteInsert ann) {
+	public void initialize(ClienteUpdate ann) {
 	}
-
-	@Override
-	public boolean isValid(ClienteNewDTO objDto, ConstraintValidatorContext context) {
 	
-		List<FieldMessage> list = new ArrayList<>();
+	public boolean isValid(ClienteDTO objDto, ConstraintValidatorContext context) {
+		@SuppressWarnings("unchecked")
+		Map<String, String> map =(Map<String, String>) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
+		Integer uriId  = Integer.parseInt(map.get("id")); 
 		
+		List <FieldMessage> list = new ArrayList<>();
 		
 		Cliente aux = repo.findByEmail(objDto.getEmail());
-		if (aux != null) {
+		if(aux != null && !aux.getId().equals(uriId)) { // Aqui verifica se email é diferente de null e se ja existe na base de dados
 			list.add(new FieldMessage("email", "O email já existe!"));
 		}
 		
-		for (FieldMessage e : list) {
+		for(FieldMessage e : list) {
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate(e.getMessage()).addPropertyNode(e.getFieldName())
 					.addConstraintViolation();
 		}
 		return list.isEmpty();
 	}
+
 }
