@@ -76,7 +76,7 @@ public class CursomcApplication implements CommandLineRunner {
 		Produto p4 = new Produto(null, "Mesa de escritório", 300.00);
 		Produto p5 = new Produto(null, "Toalha", 50.00);
 		Produto p6 = new Produto(null, "Colcha", 200);
-		Produto p7 = new Produto(null, "TV 3D", 1200.00);
+		Produto p7 = new Produto(null, "TV Color 3D", 1200.00);
 		Produto p8 = new Produto(null, "Motorroçadora", 500.00);
 		Produto p9 = new Produto(null, "Candeeiro", 100.00);
 		Produto p10 = new Produto(null, "Fio de candeeiro", 20.00);
