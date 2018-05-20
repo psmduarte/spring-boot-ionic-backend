@@ -4,19 +4,21 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.pauloduarte.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
-public class PagamentoComPaypal extends Pagamento {
+@JsonTypeName("Pagamento com PayPal")
+public class PagamentoComPrestacao extends Pagamento {
 	private static final long serialVersionUID=1L;
 	
 	private Date dataPagamento;
 	private Date dataVendicimento;
 	
-	public PagamentoComPaypal() {
+	public PagamentoComPrestacao() {
 	}
 
-	public PagamentoComPaypal(Integer id, EstadoPagamento estado, Pedido pedido, Date dataVencimento, Date dataPagamento) {
+	public PagamentoComPrestacao(Integer id, EstadoPagamento estado, Pedido pedido, Date dataVencimento, Date dataPagamento) {
 		super(id, estado, pedido);
 		this.dataPagamento=dataPagamento;
 		this.dataVendicimento=dataVencimento;

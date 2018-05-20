@@ -11,12 +11,14 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.pauloduarte.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class Pagamento implements Serializable {
-	public static final long serialVersionUID = 1L;
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@Type")//Aqui indica que na superclass Pagamento ira have
+public abstract class Pagamento implements Serializable {										 //irá haver um campo adicional Type que irá guardar
+	public static final long serialVersionUID = 1L;												 //o tipo de pagamento
 
 	@Id
 	private Integer id;

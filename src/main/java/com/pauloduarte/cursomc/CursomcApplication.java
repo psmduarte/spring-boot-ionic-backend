@@ -16,7 +16,7 @@ import com.pauloduarte.cursomc.domain.ItemPedido;
 import com.pauloduarte.cursomc.domain.Morada;
 import com.pauloduarte.cursomc.domain.Pagamento;
 import com.pauloduarte.cursomc.domain.PagamentoComCartao;
-import com.pauloduarte.cursomc.domain.PagamentoComPaypal;
+import com.pauloduarte.cursomc.domain.PagamentoComPrestacao;
 import com.pauloduarte.cursomc.domain.Pedido;
 import com.pauloduarte.cursomc.domain.Produto;
 import com.pauloduarte.cursomc.domain.enums.EstadoPagamento;
@@ -139,7 +139,7 @@ public class CursomcApplication implements CommandLineRunner {
 		Pagamento pagto1 = new PagamentoComCartao(null, EstadoPagamento.FATURADO, ped1, 6);
 		ped1.setPagamento(pagto1);
 		
-		Pagamento pagto2 = new PagamentoComPaypal(null, EstadoPagamento.PENDENTE, ped2, sdf.parse("20/03/2018 00:00"), null);
+		Pagamento pagto2 = new PagamentoComPrestacao(null, EstadoPagamento.PENDENTE, ped2, sdf.parse("20/03/2018 00:00"), null);
 		ped2.setPagamento(pagto2);
 		
 		cli1.getPedidos().addAll(Arrays.asList(ped1 ,ped2));
