@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,6 +24,8 @@ public class Pedido implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
+	@JsonFormat(pattern="dd/MM/yyyy hh:mm")
 	private Date instante;
 	
 	
@@ -38,7 +42,7 @@ public class Pedido implements Serializable {
 	private Morada moradaEntrega;
 	
 	@OneToMany(mappedBy="id.pedido")
-	private Set<ItemPedido> itens = new HashSet<>();
+	private Set<ItemPedido> items = new HashSet<>();
 	
 
 	public Pedido() {
@@ -54,7 +58,7 @@ public class Pedido implements Serializable {
 	
 	public double getValorTotal() {
 		double soma = 0.0;
-		for(ItemPedido ip : itens) {      //Por cada item pedido ip na minha lista de items
+		for(ItemPedido ip : items) {      //Por cada item pedido ip na minha lista de items
 			soma=soma+ip.getSubtotal();	  //vamos acumular a soma do valor desses items
 		}
 		return soma;
@@ -100,11 +104,11 @@ public class Pedido implements Serializable {
 		this.moradaEntrega = moradaEntrega;
 	}
 	public Set<ItemPedido> getItems() {
-		return itens;
+		return items;
 	}
 
-	public void setItems(Set<ItemPedido> itens) {
-		this.itens = itens;
+	public void setItems(Set<ItemPedido> items) {
+		this.items = items;
 	}
 	
 

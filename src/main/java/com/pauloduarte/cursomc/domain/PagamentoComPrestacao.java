@@ -4,16 +4,19 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.pauloduarte.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
-@JsonTypeName("Pagamento com PayPal")
+@JsonTypeName("PagamentoComPrestacao")
 public class PagamentoComPrestacao extends Pagamento {
 	private static final long serialVersionUID=1L;
 	
+	@JsonFormat(pattern="dd/MM/yyyy hh:mm")
 	private Date dataPagamento;
-	private Date dataVendicimento;
+	@JsonFormat(pattern="dd/MM/yyyy hh:mm")
+	private Date dataVencimento;
 	
 	public PagamentoComPrestacao() {
 	}
@@ -21,7 +24,7 @@ public class PagamentoComPrestacao extends Pagamento {
 	public PagamentoComPrestacao(Integer id, EstadoPagamento estado, Pedido pedido, Date dataVencimento, Date dataPagamento) {
 		super(id, estado, pedido);
 		this.dataPagamento=dataPagamento;
-		this.dataVendicimento=dataVencimento;
+		this.dataVencimento=dataVencimento;
 	}
 
 	public Date getDataPagamento() {
@@ -32,12 +35,12 @@ public class PagamentoComPrestacao extends Pagamento {
 		this.dataPagamento = dataPagamento;
 	}
 
-	public Date getDataVendicimento() {
-		return dataVendicimento;
+	public Date getDataVencimento() {
+		return dataVencimento;
 	}
 
-	public void setDataVendicimento(Date dataVendicimento) {
-		this.dataVendicimento = dataVendicimento;
+	public void setDataVendicimento(Date dataVencimento) {
+		this.dataVencimento = dataVencimento;
 	}
 
 

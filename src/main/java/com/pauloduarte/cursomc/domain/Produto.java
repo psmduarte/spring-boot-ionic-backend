@@ -94,8 +94,8 @@ public class Produto implements Serializable {
 		return items;
 	}
 
-	public void setItems(Set<ItemPedido> itens) {
-		this.items = itens;
+	public void setItems(Set<ItemPedido> items) {
+		this.items = items;
 	}
 
 

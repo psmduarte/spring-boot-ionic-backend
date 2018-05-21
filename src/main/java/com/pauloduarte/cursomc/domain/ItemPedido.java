@@ -27,11 +27,11 @@ public class ItemPedido implements Serializable{
 	public ItemPedido() {
 	}
 
-	public ItemPedido(Pedido pedido,Produto produto, Double disconto, Integer quantidade, Double preco) {
+	public ItemPedido(Pedido pedido,Produto produto, Double desconto, Integer quantidade, Double preco) {
 		super();
 		id.setPedido(pedido);
 		id.setProduto(produto);
-		this.desconto = disconto;
+		this.desconto = desconto;
 		this.quantidade = quantidade;
 		this.preco = preco;
 	}
