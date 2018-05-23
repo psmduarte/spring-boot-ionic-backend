@@ -16,9 +16,9 @@ import com.pauloduarte.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
-public abstract class Pagamento implements Serializable {										 //irá haver um campo adicional Type que irá guardar
-	public static final long serialVersionUID = 1L;												 //o tipo de pagamento
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type") //irá haver um campo adicional Type que irá guardar
+public abstract class Pagamento implements Serializable {										 //o tipo de pagamento
+	public static final long serialVersionUID = 1L;												 
 
 	@Id
 	private Integer id;
