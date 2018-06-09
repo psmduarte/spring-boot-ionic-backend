@@ -137,6 +137,26 @@ public class Pedido implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Pedido numero: ");
+		builder.append(getId());
+		builder.append(", instante: ");
+		builder.append(getInstante());
+		builder.append(", Cliente: ");
+		builder.append(getCliente().getNome());
+		builder.append(", Situação do Pagamento: ");
+		builder.append(getPagamento().getEstado().getDescricao());
+		builder.append("\nDetalhes:\n");
+		for(ItemPedido ip: getItems()) {   //Para cada pedido ip na lista de itens do pedido
+			builder.append(ip.toString());	//vou concatenar ip com toString;
+		}
+		builder.append("Valor total: ");
+		builder.append(getValorTotal());
+		return builder.toString();
+	}
+
 	
 	
 }

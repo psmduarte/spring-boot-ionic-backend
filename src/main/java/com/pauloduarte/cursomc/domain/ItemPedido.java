@@ -5,6 +5,9 @@ import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -108,8 +111,22 @@ public class ItemPedido implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "PT"));
+		StringBuilder builder = new StringBuilder();
+		builder.append(getProduto().getNome());
+		builder.append(" , Qte: ");
+		builder.append(getQuantidade());
+		builder.append(", Preço unitário: ");
+		builder.append(getPreco());
+		builder.append(", Subtotal: ");
+		builder.append(getSubtotal());
+		builder.append(nf.format(getSubtotal()));
+		builder.append("\n");
+		return builder.toString();
+	}
 	
 
 }
