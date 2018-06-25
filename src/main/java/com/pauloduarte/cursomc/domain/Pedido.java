@@ -1,8 +1,11 @@
 package com.pauloduarte.cursomc.domain;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -139,21 +142,24 @@ public class Pedido implements Serializable {
 
 	@Override
 	public String toString() {
+		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("PT", "pt"));
+		SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy hh:mm:ss");
 		StringBuilder builder = new StringBuilder();
 		builder.append("Pedido numero: ");
 		builder.append(getId());
 		builder.append(", instante: ");
-		builder.append(getInstante());
+		builder.append(sdf.format(getInstante()));
 		builder.append(", Cliente: ");
 		builder.append(getCliente().getNome());
 		builder.append(", Situação do Pagamento: ");
 		builder.append(getPagamento().getEstado().getDescricao());
-		builder.append("\nDetalhes:\n");
+		builder.append("\nDetalhes: \n");
 		for(ItemPedido ip: getItems()) {   //Para cada pedido ip na lista de itens do pedido
 			builder.append(ip.toString());	//vou concatenar ip com toString;
 		}
 		builder.append("Valor total: ");
-		builder.append(getValorTotal());
+		builder.append(nf.format(getValorTotal()));
+		//builder.append(getValorTotal());
 		return builder.toString();
 	}
 
