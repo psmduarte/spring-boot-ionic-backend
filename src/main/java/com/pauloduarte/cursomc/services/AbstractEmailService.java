@@ -7,7 +7,7 @@ import org.springframework.mail.SimpleMailMessage;
 
 import com.pauloduarte.cursomc.domain.Pedido;
 
-public abstract class AbstracEmailService implements EmailService {
+public abstract class AbstractEmailService implements EmailService {
 	
 	@Value("${default.sender}")
 	private String sender;
