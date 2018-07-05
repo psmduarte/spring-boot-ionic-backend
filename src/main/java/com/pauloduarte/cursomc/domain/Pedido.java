@@ -62,7 +62,7 @@ public class Pedido implements Serializable {
 	public double getValorTotal() {
 		double soma = 0.0;
 		for(ItemPedido ip : items) {      //Por cada item pedido ip na minha lista de items
-			soma=soma+ip.getSubtotal();	  //vamos acumular a soma do valor desses items
+			soma=soma+ip.getSubTotal();	  //vamos acumular a soma do valor desses items
 		}
 		return soma;
 	}
