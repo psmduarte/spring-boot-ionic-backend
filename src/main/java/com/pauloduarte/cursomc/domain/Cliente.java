@@ -16,8 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pauloduarte.cursomc.domain.enums.TipoCliente;
 
 @Entity
@@ -34,6 +34,9 @@ public class Cliente implements Serializable{
 	private String nif;
 	private Integer tipo;
 	
+	@JsonIgnore
+	private String senha;
+	
 
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
 	private List<Morada> moradas = new ArrayList<>();
@@ -49,14 +52,14 @@ public class Cliente implements Serializable{
 	public Cliente() {
 	}
 
-	public Cliente(Integer id, String nome, String email, String nif, TipoCliente tipo) { // aqui quando criamos os construtores não selecionamos as colecções (ex: moradas e telefones
+	public Cliente(Integer id, String nome, String email, String nif, TipoCliente tipo, String senha) { // aqui quando criamos os construtores não selecionamos as colecções (ex: moradas e telefones
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.nif = nif;
 		this.tipo = (tipo==null) ? null : tipo.getCodigo(); //Se tipo = null entao dá o valor null, 
-															// senão faz o getCodigo();
+		this.senha= senha;									// senão faz o getCodigo();
 	}
 
 	public Integer getId() {
@@ -97,6 +100,14 @@ public class Cliente implements Serializable{
 
 	public void setTipo(TipoCliente tipo) {
 		this.tipo = tipo.getCodigo();
+	}
+	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public List<Morada> getMoradas() {
@@ -147,8 +158,5 @@ public class Cliente implements Serializable{
 			return false;
 		return true;
 	}
-
-	
-	
 	
 }

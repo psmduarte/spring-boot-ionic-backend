@@ -16,13 +16,16 @@ public class ClienteNewDTO implements Serializable{
 	@NotEmpty(message="Preenchimento Obrigatório.")
 	@Length(min=3, max=120, message="O tamanho deve ser entre 3 e 120 caracteres.")
 	private String nome;
-	@NotEmpty(message="Email Obrigatório")
+	@NotEmpty(message="Email brigatório")
 	@Email(message="Email inválido")
 	private String email;
 	@NotEmpty(message="Email Obrigatório")
 	
 	private String nif;
 	private Integer tipo;
+	
+	@NotEmpty(message="Senha obrigatória")
+	private String senha;
 	
 	@NotEmpty(message="Nome da rua Obrigatório")
 	private String rua;
@@ -147,5 +150,17 @@ public class ClienteNewDTO implements Serializable{
 
 	public void setCidadeId(Integer cidadeId) {
 		this.cidadeId = cidadeId;
+	}
+
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 }
