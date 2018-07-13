@@ -20,6 +20,7 @@ import com.pauloduarte.cursomc.domain.PagamentoComPrestacao;
 import com.pauloduarte.cursomc.domain.Pedido;
 import com.pauloduarte.cursomc.domain.Produto;
 import com.pauloduarte.cursomc.domain.enums.EstadoPagamento;
+import com.pauloduarte.cursomc.domain.enums.Perfil;
 import com.pauloduarte.cursomc.domain.enums.TipoCliente;
 import com.pauloduarte.cursomc.repositories.CategoriaRepository;
 import com.pauloduarte.cursomc.repositories.CidadeRepository;
@@ -116,17 +117,23 @@ public class DBService {
 		distritoRepository.saveAll(Arrays.asList(dist1,dist2));
 		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
 		
-		Cliente cli1 = new Cliente(null, "Maria Silva", "psmduarte@live.com", "123456789", TipoCliente.PESSOASINGULAR, pe.encode("1234"));
-		
+		Cliente cli1 = new Cliente(null, "Maria Pilar", "psmduarte@live.com", "219032882", TipoCliente.PESSOASINGULAR, pe.encode("1234"));
 		cli1.getTelefones().addAll(Arrays.asList("111111111","222222222"));
+
+		Cliente cli2 = new Cliente(null, "Daniela Chambel", "danielachambel@hotmail.com", "214888398", TipoCliente.PESSOASINGULAR, pe.encode("1234"));
+		cli2.addPerfil(Perfil.ADMIN);
+		cli1.getTelefones().addAll(Arrays.asList("33333333","444444444"));
+
 		
 		Morada m1 = new Morada(null, "Rua das Flores", "300", "2º/Esq.", "Jardim", "7358-123", cli1, c1);		
 		Morada m2 = new Morada(null,"Avenida Matos","105","sala 21","Centro","6058-132",cli1,c2);
+		Morada m3 = new Morada(null,"Avenida da Carqueia","105",null,"Centro","74444-132",cli2,c2);
 		
 		cli1.getMoradas().addAll(Arrays.asList(m1,m2));
+		cli2.getMoradas().addAll(Arrays.asList(m3));
 		
-		clienteRepository.saveAll(Arrays.asList(cli1));
-		moradaRepository.saveAll(Arrays.asList(m1,m2));
+		clienteRepository.saveAll(Arrays.asList(cli1,cli2));
+		moradaRepository.saveAll(Arrays.asList(m1,m2, m3));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
