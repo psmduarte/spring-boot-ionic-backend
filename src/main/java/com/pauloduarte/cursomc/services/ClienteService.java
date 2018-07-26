@@ -15,11 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.pauloduarte.cursomc.domain.Cidade;
 import com.pauloduarte.cursomc.domain.Cliente;
 import com.pauloduarte.cursomc.domain.Morada;
+import com.pauloduarte.cursomc.domain.enums.Perfil;
 import com.pauloduarte.cursomc.domain.enums.TipoCliente;
 import com.pauloduarte.cursomc.dto.ClienteDTO;
 import com.pauloduarte.cursomc.dto.ClienteNewDTO;
 import com.pauloduarte.cursomc.repositories.ClienteRepository;
 import com.pauloduarte.cursomc.repositories.MoradaRepository;
+import com.pauloduarte.cursomc.security.UserSS;
+import com.pauloduarte.cursomc.services.exceptions.AuthorizationException;
 import com.pauloduarte.cursomc.services.exceptions.DataIntegrityException;
 import com.pauloduarte.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -35,9 +38,13 @@ public class ClienteService {
 	@Autowired
 	private MoradaRepository moradaRepository;
 	
-	
-	
 	public Cliente find(Integer id) {
+		
+		UserSS user = UserService.authenticated();
+		if(user== null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		
 		Optional<Cliente>obj = repo.findById(id);
 		return obj.orElseThrow(()->new ObjectNotFoundException(
 				"Objecto não encontrado id:" + id + "Tipo: " + Cliente.class.getName()));

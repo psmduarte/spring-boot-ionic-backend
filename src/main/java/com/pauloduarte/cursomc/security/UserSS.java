@@ -39,7 +39,7 @@ public class UserSS implements UserDetails {
 		return authorities;
 	}
 	
-	public Integer getIde() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -77,6 +77,10 @@ public class UserSS implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+	
+	public boolean hasRole(Perfil perfil) {                //testa o perfil do usuario
+		return getAuthorities().contains(new SimpleGrantedAuthority(perfil.getDescricao()));
 	}
 
 }
