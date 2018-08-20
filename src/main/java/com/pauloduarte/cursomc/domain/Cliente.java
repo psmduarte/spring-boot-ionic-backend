@@ -40,6 +40,7 @@ public class Cliente implements Serializable{
 	@JsonIgnore
 	private String senha;
 	
+	private String imageUrl;
 
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
 	private List<Morada> moradas = new ArrayList<>();
@@ -138,6 +139,14 @@ public class Cliente implements Serializable{
 	public Set<String> getTelefones() {
 		return telefones;
 	}
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
@@ -175,5 +184,7 @@ public class Cliente implements Serializable{
 			return false;
 		return true;
 	}
+
+
 	
 }
